@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Navbar from './components/navbar/navbar'
 import Gridbox from './components/gridbox/gridbox'
 import ImageBox from './components/imagebox/imageBox'
 import Carousel from './components/carousel/carousel';
+import Accordian from './components/accordian/accordian'
+import Modal from './components/modal/modal'
 
 import {
   BrowserRouter as Router,
@@ -12,6 +14,10 @@ import {
 } from 'react-router-dom';
 
 function App() {
+
+  const [modalOneVisible, setModalOneVisible] = useState(false)
+  const [modalTwoVisible, setModalTwoVisible] = useState(false)
+
 
   // Carousel object (required prop for Carousel)
   const carouselItems = {
@@ -60,6 +66,21 @@ function App() {
    *  * width (default 100%)
    */
 
+  /** Accordian accepts these props
+   *    * width (default auto)
+   *    * title (deafult "Accordian")
+   *    * bgcolor (default blue)
+   *    * child (required for content)
+   *    * fontsize (default 1.3rem)
+   */
+
+
+   /** Modal accepts these props
+    *   * child (content in modal)
+    *   * visible (boolean to check if shown)
+    *   * setModalVisible (callback function to change boolean state)
+    */
+
   return (
 
     <Router>
@@ -89,6 +110,13 @@ function App() {
         </Route>
         <Route path="/">
           <h3>HOME</h3>
+          <button onClick={() =>!modalOneVisible ? setModalOneVisible(true) : false}>Show modal one</button>
+          <button onClick={() => !modalTwoVisible ? setModalTwoVisible(true) : false}>Show modal Two</button>
+
+          <Accordian child="Hello world" title="Accordian One" width="50%" fontsize="1.5rem"></Accordian>
+          <Accordian child="Hello world" title="Accordian Two" width="50%" fontsize="1.5rem"></Accordian>
+          <Modal setModalVisible={setModalOneVisible} child={<p style={{textAlign:"center"}}> This is modal one</p>} visible={modalOneVisible}></Modal>
+          <Modal setModalVisible={setModalTwoVisible} child={<p style={{textAlign:"center"}}> And this is modal 2</p>} visible={modalTwoVisible}></Modal>
         </Route>
       </Switch>
       
