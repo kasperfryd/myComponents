@@ -1,27 +1,38 @@
 import React from 'react'
+import styled from 'styled-components'
 
 function Gridbox (props) {
 
-    const columns = props.columns || "1"
-    const rows = props.rows || "1"
-    const gap = props.gap || "8px"
-    const width = props.width || "100%"
-    const height = props.height || "auto"
+      /* Gridbox accepts these props; 
+      * height (default auto)
+      * width (default 100%)
+      * rows  (default 1)
+      * columns (default 1)
+      * gap (default 8px)
+      * child (requires content in grid)
+        */
 
-    const gridbox = {
-        display: "grid",
-        margin: "auto",
-        justifyItems: "center",
-        gridTemplateColumns: `repeat(${columns}, 1fr)`,
-        gridTemplateRows: `repeat(${rows}, 1fr)`,
-        gap: `${gap}`,
-        width : `${width}`,
-        height : `${height}`,
+    const Section = styled.section`
+        display: grid;
+        margin: auto;
+        justify-items: center;
+        align-item: center;
+        grid-template-columns: repeat(${props => props.columns}, 1fr);
+        grid-template-rows: repeat(${props=>props.rows}, 1fr);
+        gap: ${props => props.gap};
+        width: ${props => props.width};
+        height: ${props => props.height}; 
+    `
+    Section.defaultProps = {
+        columns : "1",
+        rows : "1",
+        gap : "8px",
+        width : "100%",
+        height : "auto",
     }
 
-    // takes width, height, rows, colums
     return (
-        <div style={gridbox}>{props.child}</div>
+        <Section {...props}>{props.child}</Section>
     )
 }
 

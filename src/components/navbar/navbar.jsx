@@ -1,70 +1,47 @@
-import React from 'react'
-import {
-    Link,
-  } from 'react-router-dom';
-
+import React, {useState} from 'react'
+import {Link} from 'react-router-dom';
 import Style from '../navbar/navbar.module.scss'
-
 
 function Navbar(props){
     
     const options = props.options
     const navLinks = options.navlinks
-    const navStyle = {
-        width: "100%",
-        backgroundColor: options.bgcolor,
-        display: "grid",
-        placeContent: "center",
-        gridTemplateColumns: `${options.gap}fr repeat(${navLinks.length}, 1fr)`,
-        gap: "8px",
-        height: `${options.height || "40px"}`,
-        boxShadow: "0px 3px 12px 0px rgba(0,0,0,0.75)",
-        fontSize: `${options.fontsize || "1rem"}`
-    }
+    const search = options.search
+    const [searchText, setSearchText] = useState("Search...")
 
-    const linkStyle={
-        color: options.textcolor,
-        height: "100%",
-        margin:"auto",
-        display: "inline-block",
-        padding: "auto",
-        textDecoration: "none",
-        textUnderline: "none",
-        curser: "pointer",
-    }
-
-    const sublinkStyle={
-        color: options.textcolor,
-        height: "100%",
-        display: "block",
-        padding: "auto",
-        textDecoration: "none",
-        textUnderline: "none",
+    const linkPos = {
+        gridTemplateColumns: `10fr repeat(${search ? navLinks.length +1 : navLinks.length}, 1fr)`,
+        height: options.height,
     }
     
     return(
-        <nav style={navStyle}>
+        <nav style={linkPos} className={Style.navstyle}>
             <span/>
+            {search && 
+            <div className={Style.searcharea}>
+                <input className={Style.searchfield} onFocus={() => setSearchText("")} onChange={(e) => setSearchText(e.target.value)} value={searchText} defaultValue={searchText}></input>
+                <button onClick={()=>{console.log(searchText)}} className={Style.searchbutton}>Search</button>
+            </div>
+            }
+            
             {navLinks && navLinks.map((item,i) => {
                 if (!item.sub){
-                    return <Link style={linkStyle} key={i} className={item.sub ? Style.dropdown : ""} to={item.main.toLowerCase()}>
+                    return <Link className={Style.link} key={i} to={item.main.toLowerCase()}>
                                 {item.main}      
                             </Link>
                 }
                 else{
                     return(
-                    <div style={linkStyle} key={i}>
                         <div key={i} className={item.sub ? Style.dropdown : ""}>
-                        <p>{item.main}</p>
+                        <a className={Style.link}>{item.main}</a>
                         {item.sub && 
-                            <div className={Style.dropdownContent} style={{backgroundColor:options.bgcolor}}>
+                            <div className={Style.dropdownContent}>
                                 {item.sub && item.sub.map((sub, i) => {
-                                return <Link key={i} style={sublinkStyle} to={sub.toLowerCase()}>{sub}</Link>
+                                return <Link className={Style.link} key={i} className={Style.sublinkstyle} to={sub.toLowerCase()}>{sub}</Link>
                             })}
                             </div>
                         }           
                         </div>
-                    </div>
                     )
                 }
             })}

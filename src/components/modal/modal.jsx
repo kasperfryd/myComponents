@@ -1,40 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Style from '../modal/modal.module.scss';
 
 function Modal (props) {
 
+   /** Modal accepts these props
+    *   * child (content in modal)
+    *   * visible (boolean to check if shown)
+    *   * setModalVisible (callback function to change boolean state)
+    */
+
     const child = props.child || "No content"
-    const visible = props.visible || false
-    const setModalVisible = props.setModalVisible
-    const shown = {
-        display: "block",
-        width: "100%",
-        height: "100%",
-        backgroundColor: "rgba(22,22,22,0.5)",
-        position: "absolute",
-        top: "0",
-        left: "0",
-    }
-    
-    const modalContent = {
-        position: "fixed",
-        display: "block",
-        width: "50vw",
-        height: "25vh",
-        backgroundColor: "rgb(245,245,245)",
-        position: "relative",
-        transform: "translateX(50%) translateY(50%)",
-        padding: "8px",
-        borderRadius: "4px",
-        boxShadow: "0px 6px 8px 1px rgba(0,0,0,0.2)",
-    }
-    const hidden = {
-        display: "none",
-    }
+    const [modalVisible, setModalVisible] = useState(false)
 
     return (
-        <section onClick={()=>setModalVisible(false)} style={visible ? shown : hidden}>
-            <div style={modalContent}>{child}</div>
+        <>
+        <section className={modalVisible ? Style.shown : Style.hidden}>
+            <div className={Style.modalContent}>{child}
+            <button className={Style.btn} onClick={()=>setModalVisible(false)}>Close Modal</button></div>
         </section>
+        <button className={Style.btn} onClick={() => setModalVisible(true)}>Open Modal</button>
+        </>
     )
 }
 

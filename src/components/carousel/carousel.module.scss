@@ -1,41 +1,59 @@
-.container{
+@import '../../components/theme/theme';
+
+.figurecontainer{
     width: 100%;
-    text-align: center;
     animation-name: fade;
     animation-fill-mode: forwards;
     animation-iteration-count: 1;
     animation-play-state: running;
     animation-duration: 0.6s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    margin:0;
+    margin-top:$margin;
+}
 
-
-    span:hover{
-        color: rgb(120,120,120)
-    }
+.caption{
+    margin:auto;
+    width:max-content;
 }
 
 .buttonleft{
-    position: absolute;
-    left: 0;
-    top: 33.3%;
-    margin-left: 2%;
-    transform:scale(2.5);
+    justify-self: left;
+    align-self: center;
+    margin-left: 4%;
+    transform:scale(3.4);
     color:white;
     transition: all 0.4s ease-in-out;
+    z-index: 2;
 }
 
 .buttonright{
-    position: absolute;
-    right: 0;
-    top: 33.3%;
-    margin-right: 2%;
-    margin-left: 2%;
-    transform:scale(2.5);
+    justify-self: right;
+    align-self:center;
+    margin-right: 4%;
+    transform:scale(3.4);
     color:white;
     transition: all 0.4s ease-in-out;
+    z-index: 2;
+}
+
+.buttonleft:hover{
+    transform:scale(4);
+    color: rgb(140,140,140);
+}
+
+.buttonright:hover{
+    transform:scale(4);
+    color: rgb(140,140,140);
 }
 
 
 @keyframes fade{
     from {opacity: 0;}
-    top {opacity: 1;}
+    to {opacity: 1;}
 }
