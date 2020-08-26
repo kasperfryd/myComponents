@@ -53,7 +53,7 @@ function Login() {
 
       // function to log out
       const logOut = () => {
-          setLoginData()
+          setLoginData([])
           Cookies.remove('token')
           //sessionStorage.removeItem('token');
           setMessage("Du er nu logget ud")
@@ -92,13 +92,13 @@ function Login() {
         <section className={Style.loginform}>
             <h4>{loginData && loginData.username ? `Du er logget ind som ${loginData.username}`: message}</h4>
             <form>
-                <label>Email/brugernavn <span className={usernameReq ? Style.required : Style.reqhidden}>*</span></label>
-                <input type="username" value={username} onChange={(e)=>{setUsername(e.target.value)}} required placeholder="Indtast din email"></input>
-                <label>Adgangskode <span className={passwordReq ? Style.required : Style.reqhidden}>*</span></label>
-                <input type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} required placeholder="Indtast din adgangskode"></input>
-                <button onClick={(e)=>sendLoginRequest(e)}>LOG IND</button>
+                <label>Email/brugernavn <span className={usernameReq && loginData && !loginData.user_id ? Style.required : Style.reqhidden}>*</span></label>
+                <input className={usernameReq && loginData && !loginData.user_id ? Style.red : Style.green} type="username" value={username} onChange={(e)=>{setUsername(e.target.value)}} required placeholder="Indtast din email"></input>
+                <label>Adgangskode <span className={passwordReq && loginData && !loginData.user_id ? Style.required : Style.reqhidden}>*</span></label>
+                <input className={passwordReq && loginData && !loginData.user_id ? Style.red : Style.green} type="password" value={password} onChange={(e)=>{setPassword(e.target.value)}} required placeholder="Indtast din adgangskode"></input>
+                {loginData && !loginData.user_id && <button className={Style.loginbtn} onClick={(e)=>sendLoginRequest(e)}>LOG IND</button>}
                 {loginData && loginData.user_id && 
-                    <button onClick={()=>logOut()}>LOG UD</button>
+                    <button className={Style.logoutbtn} onClick={()=>logOut()}>LOG UD</button>
                 }
             </form>
         </section>

@@ -20,16 +20,15 @@
         display: block;
         height: auto;
         padding: 10px 24px;
-        border: solid 1px $theme-color;
-        border-radius: 2px;
+        border-radius: 4px;
         text-align: left;
         text-decoration: none;
         margin:$margin;
-        transition: all 0.3s ease;
+        transition: all 0.2s ease;
     }
     input:focus{
-        outline-color: $theme-color-light;
-        border: solid 1px $theme-color-light;
+        outline: none;
+        border: solid 1px $theme-color;
     }
 
     button{
@@ -41,13 +40,32 @@
         padding: 6px 32px;
         color:white;
         border-radius: 4px;
-        background-color: $theme-color;
         transition: all 0.4s ease;
+    }
+    .loginbtn{
+        background-color: $alert-green;
+    }
+    .loginbtn:hover{
+        background-color: $alert-green-dark;
+    }
+    .logoutbtn{
+        background-color: $alert-red;
+    }
+    .logoutbtn:hover{
+        background-color: $alert-red-dark;
     }
 
     button:hover{
         background-color: $theme-color-dark;
     }
+}
+
+.red{
+    border: solid 1px $alert-red;
+}
+
+.green{
+    border: solid 1px $alert-green;
 }
 
 .required{
