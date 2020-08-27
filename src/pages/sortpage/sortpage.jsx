@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Compare from '../../functions/compare/compare'
+import Style from './sort.module.scss'
 
 function Sort() {
 
@@ -38,9 +39,9 @@ function Sort() {
     <section>
         
        <h1>Sort function example</h1>
-       <button onClick={()=>sortID()}>Sort ID</button>
-       <button onClick={()=>sortName()}>Sort Name</button>
-       <button onClick={()=>sortPrice()}>Sort Price</button>
+       <button className={Style.sortbtn} onClick={()=>sortID()}>Sort ID</button>
+       <button className={Style.sortbtn} onClick={()=>sortName()}>Sort Name</button>
+       <button className={Style.sortbtn} onClick={()=>sortPrice()}>Sort Price</button>
 
        {result && result.map((item, index) => {
            return (

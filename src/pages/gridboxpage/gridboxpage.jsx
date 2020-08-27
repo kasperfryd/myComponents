@@ -5,6 +5,8 @@ import ImageBox from '../../components/imagebox/imageBox'
 function GridboxPage(){
 
     return (
+      <>
+      <h1>Gridbox component</h1>
         <Gridbox columns="6" rows="1" gap="8px" width="75%" child = {
             <>
               <ImageBox height="25vh" url={"https://picsum.photos/601/622"} caption={"Image 1"}/>
@@ -18,6 +20,7 @@ function GridboxPage(){
             </>
           }>
           </Gridbox>
+    </>
     )
 
 }

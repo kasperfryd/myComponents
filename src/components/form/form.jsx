@@ -35,7 +35,7 @@ export default function Form(props){
                 </div>
         )})
         }
-        <input type="submit"/>
+        <input className={Style.formbtn} type="submit"/>
       </form>
         )
     }

@@ -1,0 +1,19 @@
+@import '../../components/theme/theme.scss';
+
+.sortbtn{
+    width: 120px;
+    height: 40px;
+    padding: $padding;
+    margin: $margin;
+    background-color: $theme-color;
+    font-size: $font-size-m;
+    outline:none;
+    border:none;
+    border-radius: 4px;
+    color:$font-color-light;
+    transition: all 0.3s ease;
+}
+
+.sortbtn:hover{
+    background-color: $theme-color-light;
+}

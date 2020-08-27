@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {timeStampToDate, dateToTimestamp, timestampToArray, getClock, getDate} from '../../functions/timestamp/time'
+import Style from './time.module.scss'
 function TimePage(){
 
     const [clock, setClock] = useState("")
@@ -43,14 +44,14 @@ function TimePage(){
            <p>Currently the time is {clock}</p>
 
             <p>Get a new date object</p>
-            <button onClick={() => {getCurrentDate()}}>Get date object</button>
+            <button className={Style.btn} onClick={() => {getCurrentDate()}}>Get date object</button>
             {currentDate && <p>Current date object is {currentDate.toString()}</p>}
             <br></br>
 
             {currentDate && 
             <>
                 <p>Get a unix timestamp of the current time and date</p>
-                <button onClick={()=>{getTimeStamp()}}>Get timestamp</button>
+                <button className={Style.btn} onClick={()=>{getTimeStamp()}}>Get timestamp</button>
                 {unixTimestamp && <p>Unix timestamp is: {unixTimestamp}</p>}
                 <br></br>
             </>
@@ -59,7 +60,7 @@ function TimePage(){
             {unixTimestamp &&
             <> 
             <p>Convert timestamp back to locale en_GB date and time</p>
-            <button onClick={()=>{convertStampToDate()}}>Convert date to timestamp</button>
+            <button className={Style.btn} onClick={()=>{convertStampToDate()}}>Convert date to timestamp</button>
             {convertedTimestamp && <p>Converted timestamp is in date {convertedTimestamp.toString()}</p>}
             <br></br>
             </>
@@ -68,7 +69,7 @@ function TimePage(){
             {convertedTimestamp && 
             <>
             <p>Get an array of all time and date values from a unix timestamp</p>
-            <button onClick={()=>{getArrayOfTime()}}>Get time array</button>
+            <button className={Style.btn} onClick={()=>{getArrayOfTime()}}>Get time array</button>
             <br></br>
             </>
             }

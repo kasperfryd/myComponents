@@ -32,7 +32,10 @@ const formfields = [
 
 function FormPage(){
     return (
+        <>
+        <h1>Form with react-hook-form</h1>
         <Form formfields={formfields}/>
+        </>
     )
 }
 

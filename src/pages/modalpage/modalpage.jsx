@@ -13,11 +13,14 @@ function ModalPage(){
       }
 
     return (
-        modalContent && modalContent.item && modalContent.item.map((item, index) => {
+    <>
+    <h1>Modal component</h1>
+        {modalContent && modalContent.item && modalContent.item.map((item, index) => {
             return (
                 <Modal key={index} child={<p>{item.text}</p>}></Modal>
             )}
-        )
+        )}
+    </>
     )
 }
 
