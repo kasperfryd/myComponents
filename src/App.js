@@ -10,6 +10,8 @@ import CarouselPage from './pages/carouselpage/carouselpage';
 import AccordionPage from './pages/accordionpage/accordionpage';
 import ModalPage from './pages/modalpage/modalpage';
 import LoginPage from './pages/loginpage/loginpage';
+import TimePage from './pages/timepage/timepage';
+import FormPage from './pages/formpage/formpage';
 
 function App() {
 
@@ -18,8 +20,8 @@ function App() {
     height: "50px",
     navlinks : [
       {main:"HOME"}, 
-      {main:"COMPONENTS", sub:["GRIDBOX", "IMAGEBOX", "CAROUSEL", "MODAL", "ACCORDION"]}, 
-      {main: "FUNCTIONS", sub:["SORT"]}, 
+      {main:"COMPONENTS", sub:["GRIDBOX", "IMAGEBOX", "CAROUSEL", "MODAL", "ACCORDION", "FORM"]}, 
+      {main: "FUNCTIONS", sub:["SORT", "TIME"]}, 
       {main:"LOGIN"},
     ],
     search: true,
@@ -49,8 +51,14 @@ function App() {
         <Route path="/sort">
           <SortPage/>
         </Route>
+        <Route path="/time">
+          <TimePage/>
+        </Route>
         <Route path="/login">
           <LoginPage/>
+        </Route>
+        <Route path="/form">
+          <FormPage/>
         </Route>
         <Route path="/">
           <FrontPage/>

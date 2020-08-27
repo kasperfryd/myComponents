@@ -19,7 +19,7 @@ function Navbar(props){
             <span/>
             {search && 
             <div className={Style.searcharea}>
-                <input className={Style.searchfield} onFocus={() => setSearchText("")} onChange={(e) => setSearchText(e.target.value)} value={searchText} defaultValue={searchText}></input>
+                <input className={Style.searchfield} onFocus={() => setSearchText("")} onChange={(e) => setSearchText(e.target.value)} value={searchText}></input>
                 <button onClick={()=>{console.log(searchText)}} className={Style.searchbutton}>Search</button>
             </div>
             }
@@ -41,7 +41,7 @@ function Navbar(props){
                             })}
                             </div>
                         }           
-                        </div>
+                    </div>
                     )
                 }
             })}

@@ -1,0 +1,43 @@
+@import '../../components/theme/theme.scss';
+
+.form{
+    margin:auto;
+    label{
+        display:block;
+        padding:$padding;
+        margin:$margin/2;
+    }
+    input{
+        display:block;
+        padding:$padding;
+        margin:$margin;   
+        display:inline-block; 
+    }
+
+    span{
+        display: inline-block;
+    }
+
+    select{
+        display:block;
+        padding:$padding;
+        margin:$margin;
+    }
+
+    input:focus{
+        outline-color: $theme-color;
+    }
+
+    .error{
+        color: $alert-red;
+    }
+
+    .radio {
+        display: inline-block;
+        margin: $margin;
+    }
+
+    .radiolabel{
+        display: inline-block;
+    }
+}
