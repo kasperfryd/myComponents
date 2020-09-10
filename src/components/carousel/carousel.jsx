@@ -47,7 +47,7 @@ function Carousel(props) {
         return () => {
             clearTimeout(timer)
         }
-    }, [pos])
+    }, [pos, delay])
 
     return (
         <section>
@@ -55,14 +55,14 @@ function Carousel(props) {
                 items.item.map((item, index) => {
                     return (
                     pos === index &&
-                            <section>
+                        <section key={index}>
                                 <figure className={Style.figurecontainer} style={{ ...containerHeight, backgroundImage: `url(${item.img})` }}>
                                     <RiArrowLeftCircleLine className={Style.buttonleft} onClick={() => { posHandler("decre") }} />
                                     <RiArrowRightCircleLine className={Style.buttonright} onClick={() => { posHandler("incre") }} />
                                 </figure>
                             <figcaption className={Style.caption}>{item.text}</figcaption>
-                            </section>
-                        )
+                        </section>
+                    )
                 })
             }
         </section>

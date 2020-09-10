@@ -12,27 +12,23 @@ import ModalPage from './pages/modalpage/modalpage';
 import LoginPage from './pages/loginpage/loginpage';
 import TimePage from './pages/timepage/timepage';
 import FormPage from './pages/formpage/formpage';
+import MobileNavBar from './components/mobilenavbar/mobilenavbar';
+import HookBasketPage from './pages/hookform/hookformpage'
+import { useMediaQuery } from 'react-responsive'
 
 function App() {
 
-  // Navbar options
-  const navOptions = {
-    height: "50px",
-    navlinks : [
-      {main:"HOME"}, 
-      {main:"COMPONENTS", sub:["GRIDBOX", "IMAGEBOX", "CAROUSEL", "MODAL", "ACCORDION", "FORM"]}, 
-      {main: "FUNCTIONS", sub:["SORT", "TIME"]}, 
-      {main:"LOGIN"},
-    ],
-    search: true,
-  }
+  const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 
   return (
-
     <Router>
-    <Navbar options={navOptions}/>
+    {!isTabletOrMobile && <Navbar/>}
+    {isTabletOrMobile && <MobileNavBar/>}
     <CookieBanner/>
       <Switch>
+        <Route path="/basket">
+          <HookBasketPage/>
+        </Route>
         <Route path="/gridbox">
           <GridboxPage/>
         </Route>
@@ -60,7 +56,10 @@ function App() {
         <Route path="/form">
           <FormPage/>
         </Route>
-        <Route path="/">
+        <Route path="/home">
+          <FrontPage/>
+        </Route>
+        <Route exact path="/">
           <FrontPage/>
         </Route>
       </Switch>

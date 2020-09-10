@@ -1,5 +1,7 @@
 import React from 'react'
 import Modal from '../../components/modal/modal'
+import '../../components/theme/global.scss'
+
 
 function ModalPage(){
 
@@ -13,14 +15,14 @@ function ModalPage(){
       }
 
     return (
-    <>
+    <section className={"mainContainer"}>
     <h1>Modal component</h1>
         {modalContent && modalContent.item && modalContent.item.map((item, index) => {
             return (
                 <Modal key={index} child={<p>{item.text}</p>}></Modal>
             )}
         )}
-    </>
+    </section>
     )
 }
 

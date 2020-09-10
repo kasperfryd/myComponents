@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react'
-import {timeStampToDate, dateToTimestamp, timestampToArray, getClock, getDate} from '../../functions/timestamp/time'
+import React, { useState, useEffect } from 'react'
+import { timeStampToDate, dateToTimestamp, timestampToArray, getClock, getDate } from '../../functions/timestamp/time'
 import Style from './time.module.scss'
-function TimePage(){
+import '../../components/theme/global.scss'
+
+function TimePage() {
 
     const [clock, setClock] = useState("")
     const [unixTimestamp, setUnixTimestamp] = useState()
@@ -11,10 +13,10 @@ function TimePage(){
 
     useEffect(() => {
         let time = setInterval(() => {
-            setClock(getClock)        
+            setClock(getClock)
         }, 1000);
 
-    return () => clearInterval(time);
+        return () => clearInterval(time);
     }, [])
 
     const getTimeStamp = () => {
@@ -38,48 +40,43 @@ function TimePage(){
         console.log(arrayOfTime)
     }, [currentDate, arrayOfTime])
 
-    return(
-        <section>
+    return (
+        <section className={"mainContainer"}>
             <h1>Time and date functions</h1>
-           <p>Currently the time is {clock}</p>
+            <p>Currently the time is {clock}</p>
 
             <p>Get a new date object</p>
-            <button className={Style.btn} onClick={() => {getCurrentDate()}}>Get date object</button>
+            <button className={Style.btn} onClick={() => { getCurrentDate() }}>Get date object</button>
             {currentDate && <p>Current date object is {currentDate.toString()}</p>}
-            <br></br>
 
-            {currentDate && 
-            <>
-                <p>Get a unix timestamp of the current time and date</p>
-                <button className={Style.btn} onClick={()=>{getTimeStamp()}}>Get timestamp</button>
-                {unixTimestamp && <p>Unix timestamp is: {unixTimestamp}</p>}
-                <br></br>
-            </>
+            {currentDate &&
+                <>
+                    <p>Get a unix timestamp of the current time and date</p>
+                    <button className={Style.btn} onClick={() => { getTimeStamp() }}>Get timestamp</button>
+                    {unixTimestamp && <p>Unix timestamp is: {unixTimestamp}</p>}
+                </>
             }
 
             {unixTimestamp &&
-            <> 
-            <p>Convert timestamp back to locale en_GB date and time</p>
-            <button className={Style.btn} onClick={()=>{convertStampToDate()}}>Convert date to timestamp</button>
-            {convertedTimestamp && <p>Converted timestamp is in date {convertedTimestamp.toString()}</p>}
-            <br></br>
-            </>
+                <>
+                    <p>Convert timestamp back to locale en_GB date and time</p>
+                    <button className={Style.btn} onClick={() => { convertStampToDate() }}>Convert date to timestamp</button>
+                    {convertedTimestamp && <p>Converted timestamp is in date {convertedTimestamp.toString()}</p>}
+                </>
             }
 
-            {convertedTimestamp && 
-            <>
-            <p>Get an array of all time and date values from a unix timestamp</p>
-            <button className={Style.btn} onClick={()=>{getArrayOfTime()}}>Get time array</button>
-            <br></br>
-            </>
+            {convertedTimestamp &&
+                <>
+                    <p>Get an array of all time and date values from a unix timestamp</p>
+                    <button className={Style.btn} onClick={() => { getArrayOfTime() }}>Get time array</button>
+                </>
             }
-            
+
             {arrayOfTime && arrayOfTime.map((item, index) => {
                 return (
                     <p>{item.name} {item.item}</p>
                 )
             })}
-
         </section>
     )
 }

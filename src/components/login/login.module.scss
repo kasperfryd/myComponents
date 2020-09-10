@@ -15,6 +15,11 @@
         display:block;
         font-weight: 500;
     }
+
+    span{
+        display: inline-block;
+        color: $alert-red;
+    }
     input{
         width: 85%;
         display: block;
@@ -25,10 +30,12 @@
         text-decoration: none;
         margin:$margin;
         transition: all 0.2s ease;
+        outline:none;
+        border: solid 1px $theme-color;
     }
     input:focus{
         outline: none;
-        border: solid 1px $theme-color;
+        border: solid 1px $theme-color-dark;
     }
 
     button{
@@ -41,6 +48,7 @@
         color:white;
         border-radius: 4px;
         transition: all 0.4s ease;
+        outline: none;
     }
     .loginbtn{
         background-color: $alert-green;
@@ -54,7 +62,6 @@
     .logoutbtn:hover{
         background-color: $alert-red-dark;
     }
-
     button:hover{
         background-color: $theme-color-dark;
     }

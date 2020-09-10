@@ -16,7 +16,7 @@ function Accordion(props) {
     return (
     <section className={Style.wrapper}>
         <div className={Style.accordion} onClick={() => {active ? setActive(false): setActive(true)}} >{title}</div>
-        <article className={active ? Style.shown: Style.hidden}>{child}</article>
+        <div className={active ? Style.shown: Style.hidden}>{child}</div>
     </section>
     )
 }

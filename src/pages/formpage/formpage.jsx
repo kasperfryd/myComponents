@@ -1,5 +1,6 @@
 import React from 'react'
 import Form from '../../components/form/form'
+import '../../components/theme/global.scss'
 
 
 /**
@@ -32,10 +33,10 @@ const formfields = [
 
 function FormPage(){
     return (
-        <>
-        <h1>Form with react-hook-form</h1>
-        <Form formfields={formfields}/>
-        </>
+        <section className={"mainContainer"}>
+            <h1>Form with react-hook-form</h1>
+            <Form formfields={formfields}/>
+        </section>
     )
 }
 

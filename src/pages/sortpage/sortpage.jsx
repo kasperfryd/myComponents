@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Compare from '../../functions/compare/compare'
 import Style from './sort.module.scss'
+import '../../components/theme/global.scss'
+
 
 function Sort() {
 
@@ -36,8 +38,7 @@ function Sort() {
 
     return (
 
-    <section>
-        
+    <section className={"mainContainer"}>
        <h1>Sort function example</h1>
        <button className={Style.sortbtn} onClick={()=>sortID()}>Sort ID</button>
        <button className={Style.sortbtn} onClick={()=>sortName()}>Sort Name</button>

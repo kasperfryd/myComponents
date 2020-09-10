@@ -14,6 +14,13 @@ function CookieBanner () {
         }
     }
 
+    const denyCookies = () => {
+        if (!Cookies.get("accept")){
+            Cookies.set("accept", false, {expires: 8});
+            setShowBanner(false)
+        }
+    }
+
     useEffect(() => {
         if (!Cookies.get("accept")){
             setShowBanner(true)
@@ -25,9 +32,10 @@ function CookieBanner () {
         <section className={Style.background}>
             <div className={Style.cookiebanner}> 
                 <p>
-                This is a cookie banner - click OKAY to accept cookies to proceed to site
+                This is a cookie banner - click OKAY to accept cookies to proceed to site. If you dont want any cookies, click deny all.
                 </p>
-            <button onClick={()=>{setAccept()}}>Okay</button>
+            <button onClick={()=>{setAccept()}}>Okay to all</button>
+            <button onClick={()=>{denyCookies()}}>Deny all</button>
             </div>
         </section>
     )

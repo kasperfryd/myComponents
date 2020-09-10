@@ -1,10 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import {Link} from 'react-router-dom';
+import { AppContext } from "../../context/ContextProvider"
 import Style from '../navbar/navbar.module.scss'
 
-function Navbar(props){
+function Navbar(){
     
-    const options = props.options
+    const { navOptions } = useContext(AppContext);
+
+
+    const options = navOptions
     const navLinks = options.navlinks
     const search = options.search
     const [searchText, setSearchText] = useState("Search...")
@@ -13,7 +17,7 @@ function Navbar(props){
         gridTemplateColumns: `10fr repeat(${search ? navLinks.length +1 : navLinks.length}, 1fr)`,
         height: options.height,
     }
-    
+
     return(
         <nav style={linkPos} className={Style.navstyle}>
             <span/>
@@ -33,11 +37,11 @@ function Navbar(props){
                 else{
                     return(
                         <div key={i} className={item.sub ? Style.dropdown : ""}>
-                        <a className={Style.link}>{item.main}</a>
+                        <p className={Style.link}>{item.main}</p>
                         {item.sub && 
                             <div className={Style.dropdownContent}>
-                                {item.sub && item.sub.map((sub, i) => {
-                                return <Link className={Style.link} key={i} className={Style.sublinkstyle} to={sub.toLowerCase()}>{sub}</Link>
+                                {item.sub && item.sub.map((item, i) => {
+                                return <Link className={Style.link + ' ' + Style.sublinkstyle} key={i} to={item.toLowerCase()}>{item}</Link>
                             })}
                             </div>
                         }           

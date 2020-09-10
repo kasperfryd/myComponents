@@ -1,5 +1,4 @@
 import React from 'react'
-import Style from './time.module.scss'
 
 export function timeStampToDate(timestamp) {
     let date = new Date(timestamp * 1000)
@@ -8,7 +7,7 @@ export function timeStampToDate(timestamp) {
 }
 
 export function getDate(){
-    let date = new Date;
+    let date = new Date();
     return date
 }
 

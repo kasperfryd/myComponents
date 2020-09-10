@@ -8,21 +8,22 @@ import Style from './imagebox.module.scss'
    *  * height (default 50vh)
    */
 
+    const Img = styled.img`
+    object-fit:contain;
+    width: ${props => props.width};
+    height: ${props => props.height};
+    `
+
+    Img.defaultProps = {
+    width: "100%",
+    height: "auto",
+    url: 'https://picsum.photos/1900/400',
+    }
+
 function ImageBox(props) {
 
     const caption = props.caption
     
-    const Img = styled.img`
-        object-fit:contain;
-        width: ${props => props.width};
-        height: ${props => props.height};
-    `
-
-    Img.defaultProps = {
-        width: "100%",
-        height: "50vh",
-        url: 'https://picsum.photos/1900/400',
-    }
 
     return (
     <figure className={Style.imgfigure}>

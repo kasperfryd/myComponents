@@ -14,10 +14,10 @@ function CarouselPage() {
     }
 
     return (
-        <>
-        <h1>Carousel component</h1>
-        <Carousel delay="12" height="55vh" items={carouselItems}></Carousel>
-        </>
+        <section>
+            <h1>Carousel component</h1>
+            <Carousel delay="5" height="55vh" items={carouselItems}></Carousel>
+        </section>
     )
 }
 
